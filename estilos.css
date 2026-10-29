@@ -1,0 +1,118 @@
+/* Sin fuentes externas ni recursos de terceros: solo fuentes del sistema. */
+:root {
+  --fondo: #ffffff;
+  --texto: #1a1a1a;
+  --suave: #4a4a4a;
+  --linea: #d4d4d4;
+  --enlace: #0b4f9c;
+  --realce: #f2f2f2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #121212;
+    --texto: #f0f0f0;
+    --suave: #bdbdbd;
+    --linea: #3a3a3a;
+    --enlace: #8ab8f0;
+    --realce: #1e1e1e;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-size: 112.5%; /* 18 px de base */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+a { color: var(--enlace); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--enlace); outline-offset: 2px; }
+
+.salto {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--fondo);
+  padding: 0.5rem 1rem;
+}
+.salto:focus { left: 0; z-index: 10; }
+
+.cabecera, .texto, .pie, .portada {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.cabecera { padding-top: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--linea); }
+.marca {
+  color: var(--texto);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+/* Portada */
+.portada { padding-top: 4rem; padding-bottom: 4rem; min-height: 70vh; }
+.portada h1 { font-size: 2.6rem; letter-spacing: 0.1em; margin: 0 0 1.25rem; line-height: 1.1; }
+.portada .frase { font-size: 1.3rem; line-height: 1.5; margin: 0 0 1.5rem; }
+.portada .pronto { font-weight: 700; margin: 0 0 1.5rem; }
+.portada .contacto { margin: 0; }
+
+/* Texto largo (política) */
+.texto { padding-top: 2rem; padding-bottom: 2rem; }
+.texto h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 1.5rem; }
+.texto h2 { font-size: 1.35rem; line-height: 1.3; margin: 2.5rem 0 0.75rem; scroll-margin-top: 1rem; }
+.texto p, .texto ul, .texto ol { margin: 0 0 1rem; }
+.texto li { margin-bottom: 0.4rem; }
+.texto ul, .texto ol { padding-left: 1.5rem; }
+#eliminacion-de-datos { scroll-margin-top: 1rem; }
+#eliminacion-de-datos:target { background: var(--realce); border-left: 4px solid var(--enlace); padding: 0.5rem 0.75rem; }
+.actualizacion { margin-top: 2rem; color: var(--suave); }
+
+/* Tablas: en pantallas anchas, tabla normal; en móvil, cada fila pasa a ser una tarjeta */
+table { width: 100%; border-collapse: collapse; margin: 0 0 1.5rem; font-size: 0.95rem; }
+th, td { border: 1px solid var(--linea); padding: 0.6rem 0.75rem; text-align: left; vertical-align: top; }
+th { background: var(--realce); }
+
+@media (max-width: 40rem) {
+  table, thead, tbody, tr, th, td { display: block; width: 100%; }
+  thead tr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  tr { border: 1px solid var(--linea); margin-bottom: 1rem; }
+  td { border: 0; border-bottom: 1px solid var(--linea); }
+  td:last-child { border-bottom: 0; }
+  td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 700;
+    color: var(--suave);
+    font-size: 0.85rem;
+  }
+}
+
+.pie {
+  padding-top: 1.25rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid var(--linea);
+  color: var(--suave);
+  font-size: 0.95rem;
+}
+.pie p { margin: 0; }
