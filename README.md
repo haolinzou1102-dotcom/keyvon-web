@@ -25,7 +25,9 @@ datos de `keyvon-prototype` ni datos personales aparte de los que ya trae la pol
 ## Política de privacidad: una sola verdad
 
 Desde su publicación, **la fuente oficial de la política es `privacidad/index.html` de este repositorio**.
-El fichero `politica_privacidad_keyvon_v1.md` de la carpeta Traspasos queda solo como histórico y ya no se edita.
+El fichero `Traspasos/politica_privacidad_keyvon_v1.md` queda solo como histórico de la **v1** y no se toca más.
+La v1.1 (la primera publicada) añade a GitHub como proveedor de alojamiento: visitantes de keyvon.es en los apartados 3 y 4,
+fila de GitHub Pages en el 6 y «Anthropic y GitHub» en el 7. Por eso la web publicada ya no coincide palabra por palabra con el `.md`.
 
 Para cambiar la política:
 
@@ -48,10 +50,19 @@ Los registros DNS se ponen a mano en GoDaddy (ver la lista exacta entregada apar
 [documentación de GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site):
 
 - `@` → 4 registros A: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-- `@` → 4 registros AAAA (opcionales): `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-- `www` → CNAME a `<usuario-de-github>.github.io` (sin el nombre del repositorio)
+- `www` → CNAME a `haolinzou1102-dotcom.github.io` (sin el nombre del repositorio)
+- Un registro TXT de verificación del dominio (`_github-pages-challenge-haolinzou1102-dotcom`), ver abajo.
+- Los registros AAAA (IPv6) son opcionales y se dejan fuera por ahora.
+- Hay que borrar antes los dos A de aparcamiento de GoDaddy (`13.248.243.5` y `76.223.105.230`).
 
 No tocar los registros de correo (MX, TXT de Microsoft 365) de keyvon.es.
+
+### Verificación del dominio
+
+Además de añadir `keyvon.es` en Settings → Pages del repositorio, el dominio está verificado a nivel de cuenta
+(GitHub → Settings → Pages → Add a domain), para que nadie más pueda reclamarlo. Se comprueba con
+`dig +short TXT _github-pages-challenge-haolinzou1102-dotcom.keyvon.es` y en esa misma pantalla debe aparecer «Verified».
+Si se cambia de cuenta de GitHub, hay que repetir la verificación.
 
 ### Comprobar el HTTPS
 
